@@ -36,9 +36,6 @@
     <ClCompile Include="SDLDemo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
@@ -58,6 +55,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fileman.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentRegistry.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -320,9 +326,6 @@
     <ClInclude Include="Component.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Source Files\Player</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerController.h">
       <Filter>Source Files\Player</Filter>
     </ClInclude>
@@ -350,7 +353,7 @@
     <ClInclude Include="fileman.h">
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="TypeRegistry.h">
+    <ClInclude Include="ComponentRegistry.h">
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
   </ItemGroup>

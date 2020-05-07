@@ -5,7 +5,6 @@
 #include "SDL_extensions/image/include/SDL_image.h"
 
 #include "Sprite.h"
-#include "Player.h"
 
 #include <vector>
 
@@ -53,7 +52,7 @@ namespace Engine
 		SDL_PumpEvents();
 		Mouse::Update();
 		Keyboard::Update();
-		static Player ply;
+		static GameObject ply("player.dat");
 
 		if (curState == curScreen::title)
 		{

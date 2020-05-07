@@ -7,12 +7,21 @@
 
 #include "GameObject.h"
 
-PlayerController::PlayerController()
-	: mouseMinDistance_(0),
-	mouseFarDistance_(12),
-	speed_(1.0f),
-	speedAdjust_(1.0f, 1.0f),
-	deceleration_(0.2f)
+#include "fileman.h"
+
+#include "ComponentRegistry.h"
+
+static ComponentRegistry::RegisterComponent register_pc("PlayerController", []
+(GameObject* parent) {return new PlayerController(parent); });
+
+PlayerController::PlayerController(GameObject* parent)
+	: Component(parent)
+{
+	parent->get_source().read_properties("PlayerController", mouseMinDistance_, mouseFarDistance_,
+		speed_, speedAdjust_, deceleration_);
+}
+
+void PlayerController::update(float dt)
 {
 
 }
@@ -20,6 +29,6 @@ PlayerController::PlayerController()
 Vector2 PlayerController::ParseMouse()
 {
 	Vector2 velocity;
-	float dist = Util::Distance(Vector2(Mouse::Get_Pos().x, Mouse::Get_Pos().y), get_parent()->)
-
+	//float dist = Util::Distance(Vector2(Mouse::Get_Pos().x, Mouse::Get_Pos().y), get_parent()->)
+	return velocity;
 }

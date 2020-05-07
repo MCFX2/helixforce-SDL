@@ -1,0 +1,10 @@
+PlayerController
+	mouseMinDistance: 0
+	mouseFarDistance: 12
+	speed: 1.0
+	speedMultipliers: 1.0 1.0
+	deceleration: 0.2 0.2
+Sprite
+	Spritename: bullet.png
+	offset: 0 0
+

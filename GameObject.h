@@ -5,18 +5,14 @@
 #include <vector>
 #include "Component.h"
 
+#include "fileman.h"
 
 
 class GameObject
 {
 public:
-	class ComponentNotFoundException : public std::exception
-	{
-		ComponentNotFoundException(std::string compName);
-	};
-
-	GameObject(std::string spritename) : sprite_(spritename){};
-	virtual void update(float dt) = 0;
+	GameObject(std::string datafile);
+	void update(float dt);
 	void render() const;
 
 	template<typename T>
@@ -30,11 +26,10 @@ public:
 		return NULL;
 	}
 
-protected:
-	Sprite sprite_;
+	ObjectFile& get_source() { return file_; };
 
 private:
 	std::vector<Component*> components_;
-
+	ObjectFile file_;
 	void read_(std::string filename);
 };

@@ -4,11 +4,14 @@
 #include "Vector.h"
 #include "Component.h"
 
+#include <functional>
+
 class PlayerController : public Component
 {
-	PlayerController();
+public:
+	PlayerController(GameObject* parent);
 
-	void update();
+	void update(float dt);
 
 private:
 

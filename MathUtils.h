@@ -6,13 +6,13 @@
 namespace Util
 {
 	template<typename T>
-	T Clamp(T value, T min, T max)
+	T Clamp(const T& value, const T& min, const T& max)
 	{
 		return value > max ? max : value < min ? min : value;
 	}
 
 	template<typename T>
-	void ClampInPlace(T& value, T min, T max)
+	void ClampInPlace(T& value, const T& min, const T& max)
 	{
 		if (value < min)
 		{
@@ -22,16 +22,6 @@ namespace Util
 		{
 			value = max;
 		}
-	}
-
-	float SqDistance(Vector2 a, Vector2 b)
-	{
-		return (a.x * b.x) + (a.y * b.y);
-	}
-
-	float Distance(Vector2 a, Vector2 b)
-	{
-		return sqrtf(SqDistance(a, b));
 	}
 }
 

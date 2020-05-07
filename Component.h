@@ -7,7 +7,7 @@ class Component
 public:
 	Component(GameObject* parent);
 
-	virtual void update() = 0;
+	virtual void update(float dt) = 0;
 	virtual void render() {};
 protected:
 	GameObject* get_parent();

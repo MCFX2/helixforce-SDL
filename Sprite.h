@@ -3,21 +3,20 @@
 #include "SDL/include/SDL_surface.h"
 #include "SDL_extensions/image/include/SDL_image.h"
 #include <string>
+#include "GameObject.h"
+#include "Component.h"
+#include "Vector.h"
 
-class Sprite
+class Sprite : public Component
 {
 public:
-	Sprite(std::string filename);
+	Sprite(GameObject* parent);
 
-	void Render() const;
-
-	//temporary
-	void setPos(int x, int y);
-	int getX();
-	int getY();
+	void render() const;
+	void update(float dt) {};
 
 private:
 
 	SDL_Texture* source_;
-	SDL_Rect rect_;
+	Vector2 offset_;
 };
