@@ -1,15 +1,19 @@
 Transform
 	Translation: 200 200
-	Scale: 200 100
+	Scale: 100 100
 	Rotation: 0
 PlayerController
 	mouseMinDistance: 0
-	mouseFarDistance: 12
-	speed: 1.0
+	mouseFarDistance: 14
+	speed: 1430
 	speedMultipliers: 1.0 1.0
-	deceleration: 0.2 0.2
+	deceleration: 28.6 28.6
+	maxLVelocity: 357.5
+	maxRVelocity: 357.5
+	maxVVelocity: 357.5
 Sprite
 	Spritename: bullet.png
 	offset: 0 0
 Physics
-	initialVelocity: 10 0
+	initialVelocity: 0 0
+	

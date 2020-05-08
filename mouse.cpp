@@ -6,8 +6,8 @@
 static const unsigned int MouseEvent_Min = SDL_MOUSEMOTION;
 static const unsigned int MouseEvent_Max = SDL_MOUSEWHEEL;
 
-static MousePos curPos;
-static MousePos lastPos;
+static Vector2 curPos;
+static Vector2 lastPos;
 
 static const unsigned int maxHandledMouseButton = SDL_BUTTON_X2;
 struct mouseButtonStateContainer
@@ -22,7 +22,9 @@ namespace Mouse
 {
 	void update_mouse_pos()
 	{
-		SDL_GetMouseState(&curPos.x, &curPos.y);
+		int x, y;
+		SDL_GetMouseState(&x, &y);
+		curPos = Vector2((float)x, (float)y);
 	}
 
 	void tick_mouse_states()
@@ -74,12 +76,12 @@ namespace Mouse
 		}
 	}
 
-	MousePos Get_Pos()
+	Vector2 Get_Pos()
 	{
 		return curPos;
 	}
 
-	MousePos Get_LastPos()
+	Vector2 Get_LastPos()
 	{
 		return lastPos;
 	}

@@ -4,8 +4,6 @@
 #include "Vector.h"
 #include "Component.h"
 
-#include <functional>
-
 class PlayerController : public Component
 {
 public:
@@ -16,6 +14,10 @@ public:
 private:
 
 	Vector2 ParseMouse();
+	void Decelerate();
+	void Accelerate();
+	void ClampVelocity();
+	void ClampPosition();
 
 	float mouseMinDistance_;
 	float mouseFarDistance_;
@@ -24,4 +26,8 @@ private:
 	Vector2 speedAdjust_;
 
 	Vector2 deceleration_;
+
+	float maxRVelocity_;
+	float maxLVelocity_;
+	float maxVVelocity_;
 };

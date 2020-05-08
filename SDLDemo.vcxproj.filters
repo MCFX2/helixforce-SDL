@@ -34,6 +34,9 @@
     <Filter Include="Source Files\Engine\Components">
       <UniqueIdentifier>{812365d5-0533-45ca-98c7-b38f56e6a3e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Engine\OS">
+      <UniqueIdentifier>{32096a5e-6b29-4bed-b264-846b3302fbd2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SDLDemo.cpp">
@@ -57,9 +60,6 @@
     <ClCompile Include="Component.cpp">
       <Filter>Source Files\Engine\Components</Filter>
     </ClCompile>
-    <ClCompile Include="fileman.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
     <ClCompile Include="keyboard.cpp">
       <Filter>Source Files\Engine\Input</Filter>
     </ClCompile>
@@ -74,6 +74,12 @@
     </ClCompile>
     <ClCompile Include="Physics.cpp">
       <Filter>Source Files\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="fileman.cpp">
+      <Filter>Source Files\Engine\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="screen.cpp">
+      <Filter>Source Files\Engine\OS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -353,9 +359,6 @@
     <ClInclude Include="keyboard.h">
       <Filter>Source Files\Engine\Input</Filter>
     </ClInclude>
-    <ClInclude Include="fileman.h">
-      <Filter>Source Files\Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Sprite.h">
       <Filter>Source Files\Engine\Components</Filter>
     </ClInclude>
@@ -373,6 +376,12 @@
     </ClInclude>
     <ClInclude Include="Physics.h">
       <Filter>Source Files\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="fileman.h">
+      <Filter>Source Files\Engine\OS</Filter>
+    </ClInclude>
+    <ClInclude Include="screen.h">
+      <Filter>Source Files\Engine\OS</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

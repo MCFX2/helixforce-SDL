@@ -13,6 +13,10 @@
 
 #include "Utils.h"
 
+#include <Windows.h>
+
+#include "screen.h"
+
 enum class curScreen
 {
 	title,
@@ -24,7 +28,7 @@ static SDL_Renderer* renderer;
 
 static std::vector<SDL_Event*> events;
 
-static const double targetFPS = 60;
+static const double targetFPS = 144;
 
 namespace Engine
 {
@@ -44,7 +48,7 @@ namespace Engine
 	void Init()
 	{
 		SDL_InitSubSystem(SDL_INIT_EVERYTHING);
-		SDL_Window* win = SDL_CreateWindow("Bullet Chaos V9", 100, 100, 1280, 720, SDL_WINDOW_SHOWN);
+		SDL_Window* win = Screen::Init();
 		renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
 
 		IMG_Init(IMG_INIT_PNG);
@@ -83,7 +87,9 @@ namespace Engine
 		dt = frameTime.elapsed();
 		if (dt < 1.f / targetFPS)
 		{ //we beat the target frame time, wait out the remainder
-			SDL_Delay(1000 * (int)((1.f / targetFPS) - dt));
+			SDL_Delay((int)(1000 * ((1.f / targetFPS) - dt)));
+			//Sleep((int)(1000 * ((1.f / targetFPS) - dt)));
+			//std::this_thread::sleep_for(std::chrono::seconds((1.f / targetFPS) - dt)));
 			dt = 1.f / targetFPS;
 		}
 		frameTime.reset();
