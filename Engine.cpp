@@ -11,6 +11,8 @@
 #include "mouse.h"
 #include "keyboard.h"
 
+#include "Utils.h"
+
 enum class curScreen
 {
 	title,
@@ -21,6 +23,8 @@ static curScreen curState = curScreen::title;
 static SDL_Renderer* renderer;
 
 static std::vector<SDL_Event*> events;
+
+static const double targetFPS = 60;
 
 namespace Engine
 {
@@ -49,6 +53,8 @@ namespace Engine
 
 	void Update()
 	{
+		static double dt = 0;
+		static Util::Timer frameTime;
 		SDL_PumpEvents();
 		Mouse::Update();
 		Keyboard::Update();
@@ -56,7 +62,7 @@ namespace Engine
 
 		if (curState == curScreen::title)
 		{
-			ply.update(0);
+			ply.update((float)dt);
 		}
 
 		//render handling
@@ -71,7 +77,16 @@ namespace Engine
 		//clear event stack
 		SDL_Event garbage;
 		while (SDL_PollEvent(&garbage)) {}
-		SDL_Delay(1);
+
+
+
+		dt = frameTime.elapsed();
+		if (dt < 1.f / targetFPS)
+		{ //we beat the target frame time, wait out the remainder
+			SDL_Delay(1000 * (int)((1.f / targetFPS) - dt));
+			dt = 1.f / targetFPS;
+		}
+		frameTime.reset();
 	}
 
 	void Shutdown()

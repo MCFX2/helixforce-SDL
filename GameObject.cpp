@@ -1,5 +1,7 @@
 #include "GameObject.h"
 
+#include "Component.h"
+
 void GameObject::render() const
 {
 	for (Component* c : components_)
@@ -19,10 +21,4 @@ void GameObject::update(float dt)
 GameObject::GameObject(std::string datafile) : file_(datafile)
 {
 	components_ = file_.construct_components(this);
-}
-
-
-void GameObject::read_(std::string filename)
-{
-
 }

@@ -31,6 +31,9 @@
     <Filter Include="Source Files\Engine\Input">
       <UniqueIdentifier>{9aa7896e-fa85-41b8-a5bc-566f25332bd3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Engine\Components">
+      <UniqueIdentifier>{812365d5-0533-45ca-98c7-b38f56e6a3e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SDLDemo.cpp">
@@ -42,29 +45,35 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
     <ClCompile Include="mouse.cpp">
       <Filter>Source Files\Engine\Input</Filter>
     </ClCompile>
     <ClCompile Include="PlayerController.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
-    <ClCompile Include="keyboard.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files\Engine\Components</Filter>
     </ClCompile>
     <ClCompile Include="Component.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Engine\Components</Filter>
     </ClCompile>
     <ClCompile Include="fileman.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Vector.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="keyboard.cpp">
+      <Filter>Source Files\Engine\Input</Filter>
     </ClCompile>
     <ClCompile Include="ComponentRegistry.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source Files\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics.cpp">
+      <Filter>Source Files\Engine\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -323,9 +332,6 @@
     <ClInclude Include="SDL_extensions\image\include\SDL_image.h">
       <Filter>Header Files\SDL\Image</Filter>
     </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerController.h">
       <Filter>Source Files\Player</Filter>
     </ClInclude>
@@ -336,9 +342,6 @@
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>Source Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="mouse.h">
@@ -353,8 +356,23 @@
     <ClInclude Include="fileman.h">
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Source Files\Engine\Components</Filter>
+    </ClInclude>
     <ClInclude Include="ComponentRegistry.h">
+      <Filter>Source Files\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Source Files\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Source Files\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
       <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics.h">
+      <Filter>Source Files\Engine\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

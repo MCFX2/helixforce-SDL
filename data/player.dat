@@ -1,3 +1,7 @@
+Transform
+	Translation: 200 200
+	Scale: 200 100
+	Rotation: 0
 PlayerController
 	mouseMinDistance: 0
 	mouseFarDistance: 12
@@ -7,4 +11,5 @@ PlayerController
 Sprite
 	Spritename: bullet.png
 	offset: 0 0
-
+Physics
+	initialVelocity: 10 0

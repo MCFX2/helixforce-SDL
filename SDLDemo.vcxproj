@@ -161,10 +161,12 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="mouse.cpp" />
+    <ClCompile Include="Physics.cpp" />
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="SDLDemo.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="ComponentRegistry.cpp" />
+    <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +177,7 @@
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="MathUtils.h" />
     <ClInclude Include="mouse.h" />
+    <ClInclude Include="Physics.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="SDL\include\begin_code.h" />
     <ClInclude Include="SDL\include\close_code.h" />
@@ -263,6 +266,8 @@
     <ClInclude Include="SDL_extensions\image\include\SDL_image.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="ComponentRegistry.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="Utils.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

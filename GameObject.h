@@ -1,12 +1,11 @@
 #pragma once
 
-#include "Sprite.h"
 #include <string>
 #include <vector>
-#include "Component.h"
 
 #include "fileman.h"
 
+class Component;
 
 class GameObject
 {
@@ -16,7 +15,7 @@ public:
 	void render() const;
 
 	template<typename T>
-	T* get_component()
+	T* get_component() const
 	{
 		for (Component* c : components_)
 		{
@@ -31,5 +30,4 @@ public:
 private:
 	std::vector<Component*> components_;
 	ObjectFile file_;
-	void read_(std::string filename);
 };

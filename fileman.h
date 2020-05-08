@@ -19,6 +19,7 @@ public:
 	template<typename ... params>
 	void read_properties(std::string tag, params& ... args)
 	{
+		reset_cursor();
 		std::string line;
 		while (std::getline(file_, line))
 		{

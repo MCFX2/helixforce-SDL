@@ -12,14 +12,22 @@ std::vector<Component*> ObjectFile::construct_components(GameObject* parent)
 {
 	reset_cursor();
 	std::vector<Component*> constructed_components;
+	//we build the list of components to construct first, then actually construct them all at once last.
+	//this is done because actually constructing the components might fuck with our file cursor.
+	std::vector<std::string> component_list;
 	std::string curLine;
 	while (std::getline(file_, curLine))
 	{ //first determine if line refers to a component
-		
+		if (curLine.empty()) continue;
 		if (std::isalpha(curLine.at(0)))
 		{ //if line starts with a letter, assume it is a componenet
-			constructed_components.push_back(ComponentRegistry::MakeComponent(curLine, parent));
+			component_list.push_back(curLine);
 		}
+	}
+
+	for (std::string& component_tag : component_list)
+	{
+		constructed_components.push_back(ComponentRegistry::MakeComponent(component_tag, parent));
 	}
 
 	return constructed_components;

@@ -1,7 +1,5 @@
 #pragma once
 
-#pragma warning(disable: )
-
 #include <vector>
 #include "SDL/include/SDL_events.h"
 

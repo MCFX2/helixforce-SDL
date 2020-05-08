@@ -8,6 +8,8 @@
 
 #include "ComponentRegistry.h"
 
+#include "Transform.h"
+
 static std::unordered_map<std::string, SDL_Texture*> Sprite_Dict;
 
 static const std::string Sprite_path = "./assets/";
@@ -21,7 +23,7 @@ Sprite::Sprite(GameObject* parent) : Component(parent)
 {
 	std::string filename;
 	parent->get_source().read_properties("Sprite", filename, offset_);
-
+	//sprites are stored in a dictionary so we don't have duplicate sprites
 	auto nSprite = Sprite_Dict.find(filename);
 	//sprite is not in dictionary
 	if (nSprite == Sprite_Dict.end())
@@ -39,7 +41,13 @@ Sprite::Sprite(GameObject* parent) : Component(parent)
 void Sprite::render() const
 {
 	SDL_Rect renderable;
-	renderable = { 0 };
+	const Transform* transform = get_component<Transform>();
+
+	renderable.x = (int)(offset_.x + transform->translation.x);
+	renderable.y = (int)(offset_.y + transform->translation.y);
+	renderable.w = (int)transform->scale.x;
+	renderable.h = (int)transform->scale.y;
+	//adjust so sprite is centered
 	renderable.x -= (int)(renderable.w * 0.5f);
 	renderable.y -= (int)(renderable.h * 0.5f);
 	SDL_RenderCopy(Engine::Get_Renderer(), source_, NULL, &renderable);

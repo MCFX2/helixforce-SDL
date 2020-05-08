@@ -6,6 +6,33 @@ std::istream& operator>>(std::istream& is, Vector2& vec)
 	return is;
 }
 
+Vector2 Vector2::operator*(const Vector2& rhs) const
+{
+	return Vector2(x * rhs.x, y * rhs.y);
+}
+
+Vector2 Vector2::operator*(const float& rhs) const
+{
+	return Vector2(x * rhs, y * rhs);
+}
+
+Vector2 Vector2::operator+(const Vector2& rhs) const
+{
+	return Vector2(x + rhs.x, y + rhs.y);
+}
+
+Vector2& Vector2::operator+=(const Vector2& rhs)
+{
+	x += rhs.x;
+	y += rhs.y;
+	return *this;
+}
+
+Vector2 Vector2::operator-(const Vector2& rhs) const
+{
+	return Vector2(x - rhs.x, y - rhs.y);
+}
+
 float Vector2::sqDistance(Vector2 b)
 {
 	return Vector2::sqDistance(*this, b);
