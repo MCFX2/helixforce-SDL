@@ -11,9 +11,9 @@ public:
 
 	void update(float dt) {};
 
-	Vector2 translation;
-	Vector2 scale;
-	float rotation;
+	Vector2 translation{ Vector2(0) };
+	Vector2 scale{ Vector2(100) };
+	float rotation{ 0 };
 
 private:
 

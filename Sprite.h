@@ -15,8 +15,8 @@ public:
 	void render() const;
 	void update(float dt) {};
 
+	Vector2 offset;
 private:
 
 	SDL_Texture* source_;
-	Vector2 offset_;
 };

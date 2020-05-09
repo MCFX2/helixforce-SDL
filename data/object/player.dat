@@ -12,7 +12,7 @@ PlayerController
 	maxRVelocity: 357.5
 	maxVVelocity: 357.5
 Sprite
-	Spritename: bullet.png
+	Spritename: player/shipscout.png
 	offset: 0 0
 Physics
 	initialVelocity: 0 0

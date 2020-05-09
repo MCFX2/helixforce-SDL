@@ -4,7 +4,7 @@
 
 #include "ComponentRegistry.h"
 
-ObjectFile::ObjectFile(std::string filename) : file_("./data/" + filename)
+ObjectFile::ObjectFile(std::string filename) : file_("./data/object/" + filename)
 {
 }
 

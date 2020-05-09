@@ -14,15 +14,17 @@ static std::unordered_map<std::string, SDL_Texture*> Sprite_Dict;
 
 static const std::string Sprite_path = "./assets/";
 
-//static ComponentRegistry::RegisterComponent register_sprite("Sprite", []
-//	(GameObject* parent){return new Sprite(parent); });
-
 REGISTER_COMPONENT("Sprite", Sprite);
+
+//ADD_PROPERTY("Sprite", "Offset", &Sprite::offset_);
+
+ComponentRegistry::RegisterProperty prop("Sprite", "Offset", [](Component* inst, std::istringstream& inVal) {
+	Sprite* s = static_cast<Sprite*>(inst); inVal >> s->offset; });
 
 Sprite::Sprite(GameObject* parent) : Component(parent)
 {
 	std::string filename;
-	parent->get_source().read_properties("Sprite", filename, offset_);
+	parent->get_source().read_properties("Sprite", filename, offset);
 	//sprites are stored in a dictionary so we don't have duplicate sprites
 	auto nSprite = Sprite_Dict.find(filename);
 	//sprite is not in dictionary
@@ -43,8 +45,8 @@ void Sprite::render() const
 	SDL_Rect renderable;
 	const Transform* transform = get_component<Transform>();
 
-	renderable.x = (int)(offset_.x + transform->translation.x);
-	renderable.y = (int)(offset_.y + transform->translation.y);
+	renderable.x = (int)(offset.x + transform->translation.x);
+	renderable.y = (int)(offset.y + transform->translation.y);
 	renderable.w = (int)transform->scale.x;
 	renderable.h = (int)transform->scale.y;
 	//adjust so sprite is centered

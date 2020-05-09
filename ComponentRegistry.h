@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <sstream>
 #include <functional>
 
 class Component;
@@ -19,5 +20,14 @@ namespace ComponentRegistry
 		RegisterComponent(std::string name, std::function<Component * (GameObject*)> create_func);
 	};
 
+	//do not try to understand how this code works, you will be sad
+	struct RegisterProperty
+	{
+		RegisterProperty(std::string component_name, std::string property_name,
+			std::function<void(Component*, std::istringstream&)> set_func);
+	};
+
 	Component* MakeComponent(std::string name, GameObject* parent);
+
+	//need some kind of way to actually use the property table, figure this out later
 }
