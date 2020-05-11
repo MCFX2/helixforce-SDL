@@ -15,12 +15,18 @@
 #include "Physics.h"
 
 REGISTER_COMPONENT("PlayerController", PlayerController);
+REGISTER_SIMPLE_PROPERTY(PlayerController, "MouseMinDistance", mouseMinDistance_);
+REGISTER_SIMPLE_PROPERTY(PlayerController, "MouseFarDistance", mouseFarDistance_);
+REGISTER_SIMPLE_PROPERTY(PlayerController, "Speed", speed_);
+REGISTER_SIMPLE_PROPERTY(PlayerController, "SpeedMultipliers", speedAdjust_);
+REGISTER_SIMPLE_PROPERTY(PlayerController, "Deceleration", deceleration_);
+REGISTER_SIMPLE_PROPERTY(PlayerController, "MaxLVelocity", maxLVelocity_);
+REGISTER_SIMPLE_PROPERTY(PlayerController, "MaxRVelocity", maxRVelocity_);
+REGISTER_SIMPLE_PROPERTY(PlayerController, "MaxVVelocity", maxVVelocity_);
 
 PlayerController::PlayerController(GameObject* parent)
 	: Component(parent)
 {
-	parent->get_source().read_properties("PlayerController", mouseMinDistance_, mouseFarDistance_,
-		speed_, speedAdjust_, deceleration_, maxLVelocity_, maxRVelocity_, maxVVelocity_);
 }
 
 void PlayerController::update(float dt)
@@ -32,7 +38,9 @@ void PlayerController::update(float dt)
 
 void PlayerController::ClampPosition()
 {
-
+	Transform* transform = get_component<Transform>();
+	Util::ClampInPlace<float>(transform->translation.x, 0, 1280);
+	Util::ClampInPlace<float>(transform->translation.y, 0, 720);
 }
 
 void PlayerController::ClampVelocity()

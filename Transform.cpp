@@ -4,8 +4,10 @@
 #include "GameObject.h"
 
 REGISTER_COMPONENT("Transform", Transform);
+REGISTER_SIMPLE_PROPERTY(Transform, "Translation", translation);
+REGISTER_SIMPLE_PROPERTY(Transform, "Scale", scale);
+REGISTER_SIMPLE_PROPERTY(Transform, "Rotation", rotation);
 
 Transform::Transform(GameObject* parent) : Component(parent)
 {
-	parent->get_source().read_properties("Transform", translation, scale, rotation);
 }

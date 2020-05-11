@@ -11,8 +11,5 @@ public:
 
 	void update(float dt);
 
-	Vector2 velocity;
-
-private:
-
+	Vector2 velocity{ Vector2(0) };
 };

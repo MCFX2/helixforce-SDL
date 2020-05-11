@@ -15,8 +15,10 @@ public:
 	void render() const;
 	void update(float dt) {};
 
-	Vector2 offset;
+	void set_source(std::string filename);
+
+	Vector2 offset{ Vector2(0) };
 private:
 
-	SDL_Texture* source_;
+	SDL_Texture* source_{ nullptr };
 };

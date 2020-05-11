@@ -14,17 +14,20 @@ static std::unordered_map<std::string, SDL_Texture*> Sprite_Dict;
 
 static const std::string Sprite_path = "./assets/";
 
-REGISTER_COMPONENT("Sprite", Sprite);
-
-//ADD_PROPERTY("Sprite", "Offset", &Sprite::offset_);
-
-ComponentRegistry::RegisterProperty prop("Sprite", "Offset", [](Component* inst, std::istringstream& inVal) {
-	Sprite* s = static_cast<Sprite*>(inst); inVal >> s->offset; });
-
-Sprite::Sprite(GameObject* parent) : Component(parent)
+static void SpriteSourceProperty(Component* component, std::istringstream& src)
 {
 	std::string filename;
-	parent->get_source().read_properties("Sprite", filename, offset);
+	src >> filename;
+	Sprite* sprite = static_cast<Sprite*>(component);
+	sprite->set_source(filename);
+}
+
+REGISTER_COMPONENT("Sprite", Sprite);
+REGISTER_SIMPLE_PROPERTY(Sprite, "Offset", offset);
+REGISTER_PROPERTY(Sprite, "Spritename", SpriteSourceProperty);
+
+void Sprite::set_source(std::string filename)
+{
 	//sprites are stored in a dictionary so we don't have duplicate sprites
 	auto nSprite = Sprite_Dict.find(filename);
 	//sprite is not in dictionary
@@ -36,8 +39,13 @@ Sprite::Sprite(GameObject* parent) : Component(parent)
 	}
 	else
 	{
+		
 		source_ = nSprite->second;
 	}
+}
+
+Sprite::Sprite(GameObject* parent) : Component(parent)
+{
 }
 
 void Sprite::render() const

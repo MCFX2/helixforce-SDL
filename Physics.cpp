@@ -5,10 +5,10 @@
 #include "Transform.h"
 
 REGISTER_COMPONENT("Physics", Physics);
+REGISTER_SIMPLE_PROPERTY(Physics, "InitialVelocity", velocity);
 
 Physics::Physics(GameObject* parent) : Component(parent)
 {
-	parent->get_source().read_properties("Physics", velocity);
 }
 
 void Physics::update(float dt)
