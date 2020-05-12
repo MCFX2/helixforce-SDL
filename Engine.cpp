@@ -28,7 +28,7 @@ static SDL_Renderer* renderer;
 
 static std::vector<SDL_Event*> events;
 
-static const double targetFPS = 144;
+static double targetFPS = 60;
 
 namespace Engine
 {
@@ -43,16 +43,14 @@ namespace Engine
 		return event_list;
 	}
 
-
+	GameObject* object_manager;
 
 	void Init()
 	{
 		SDL_InitSubSystem(SDL_INIT_EVERYTHING);
-		SDL_Window* win = Screen::Init();
-		renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
-
 		IMG_Init(IMG_INIT_PNG);
-		//SDL_Load
+		object_manager = new GameObject("game.dat");
+		targetFPS = Screen::Get_Screen().refreshRate;
 	}
 
 	void Update()
@@ -62,33 +60,20 @@ namespace Engine
 		SDL_PumpEvents();
 		Mouse::Update();
 		Keyboard::Update();
-		static GameObject ply("player.dat");
-
-		if (curState == curScreen::title)
-		{
-			ply.update((float)dt);
-		}
-
+		object_manager->update((float)dt);
 		//render handling
 		SDL_RenderClear(renderer);
-		if (curState == curScreen::title)
-		{
-			ply.render();
-		}
-
+		object_manager->render();
 		SDL_RenderPresent(renderer);
 
 		//clear event stack
 		SDL_Event garbage;
 		while (SDL_PollEvent(&garbage)) {}
 
-
-
 		dt = frameTime.elapsed();
 		if (dt < 1.f / targetFPS)
 		{ //we beat the target frame time, wait out the remainder
 			SDL_Delay((int)(1000 * ((1.f / targetFPS) - dt)));
-			//Sleep((int)(1000 * ((1.f / targetFPS) - dt)));
 			//std::this_thread::sleep_for(std::chrono::seconds((1.f / targetFPS) - dt)));
 			dt = 1.f / targetFPS;
 		}
@@ -98,6 +83,15 @@ namespace Engine
 	void Shutdown()
 	{
 		SDL_QuitSubSystem(SDL_INIT_EVERYTHING);
+	}
+
+	void Set_Renderer(SDL_Renderer* render)
+	{
+		if (renderer)
+		{
+			SDL_DestroyRenderer(renderer);
+		}
+		renderer = render;
 	}
 
 	SDL_Renderer* Get_Renderer()

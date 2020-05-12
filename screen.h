@@ -7,12 +7,13 @@ struct SDL_Window;
 struct Screen_Info
 {
 	int x, y, w, h;
-	float refreshRate;
+	unsigned refreshRate;
+	bool fullscreen;
 };
 
 namespace Screen
 { //inits the window and returns a pointer to it
-	SDL_Window* Init();
+	SDL_Window* Init(Screen_Info);
 
 	Screen_Info Get_Screen();
 }

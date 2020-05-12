@@ -16,4 +16,5 @@ namespace Engine
 	void Shutdown();
 
 	SDL_Renderer* Get_Renderer();
+	void Set_Renderer(SDL_Renderer*);
 }

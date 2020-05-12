@@ -7,12 +7,14 @@
 #include "Vector.h"
 
 #include "ComponentRegistry.h"
-
+#include "screen.h"
 #include "Transform.h"
 
 static std::unordered_map<std::string, SDL_Texture*> Sprite_Dict;
 
 static const std::string Sprite_path = "./assets/";
+
+static const unsigned assumedScreenX = 1280, assumedScreenY = 720;
 
 static void SpriteSourceProperty(Component* component, std::istringstream& src)
 {
@@ -39,9 +41,13 @@ void Sprite::set_source(std::string filename)
 	}
 	else
 	{
-		
 		source_ = nSprite->second;
 	}
+}
+
+void Sprite::start()
+{
+	transform = get_component<Transform>();
 }
 
 Sprite::Sprite(GameObject* parent) : Component(parent)
@@ -51,12 +57,12 @@ Sprite::Sprite(GameObject* parent) : Component(parent)
 void Sprite::render() const
 {
 	SDL_Rect renderable;
-	const Transform* transform = get_component<Transform>();
-
-	renderable.x = (int)(offset.x + transform->translation.x);
-	renderable.y = (int)(offset.y + transform->translation.y);
-	renderable.w = (int)transform->scale.x;
-	renderable.h = (int)transform->scale.y;
+	float wRatio = (float)Screen::Get_Screen().w / (float)assumedScreenX;
+	float hRatio = (float)Screen::Get_Screen().h / (float)assumedScreenY;
+	renderable.x = (int)((offset.x + transform->translation.x) * wRatio);
+	renderable.y = (int)((offset.y + transform->translation.y) * hRatio);
+	renderable.w = (int)(transform->scale.x * wRatio);
+	renderable.h = (int)(transform->scale.y * hRatio);
 	//adjust so sprite is centered
 	renderable.x -= (int)(renderable.w * 0.5f);
 	renderable.y -= (int)(renderable.h * 0.5f);

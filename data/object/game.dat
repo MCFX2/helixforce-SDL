@@ -1,0 +1,9 @@
+GameSettings
+	Resolution: 1280 720
+	WindowPosition: 50 50
+	RefreshRate: 60
+	Fullscreen: 0
+	FirstLevel: MainLevel
+Level
+	Name: MainLevel
+	Object: player.dat

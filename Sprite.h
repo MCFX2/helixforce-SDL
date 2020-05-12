@@ -7,18 +7,21 @@
 #include "Component.h"
 #include "Vector.h"
 
+class Transform;
+
 class Sprite : public Component
 {
 public:
 	Sprite(GameObject* parent);
 
-	void render() const;
-	void update(float dt) {};
+	void render() const override;
+	void update(float dt) override {};
+	void start() override;
 
 	void set_source(std::string filename);
 
 	Vector2 offset{ Vector2(0) };
 private:
-
+	Transform* transform;
 	SDL_Texture* source_{ nullptr };
 };

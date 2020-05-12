@@ -13,6 +13,7 @@ public:
 	GameObject(std::string datafile);
 	void update(float dt);
 	void render() const;
+	void post_construction();
 
 	template<typename T>
 	T* get_component() const

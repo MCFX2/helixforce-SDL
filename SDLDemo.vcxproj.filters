@@ -37,6 +37,12 @@
     <Filter Include="Source Files\Engine\OS">
       <UniqueIdentifier>{32096a5e-6b29-4bed-b264-846b3302fbd2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Engine\Components\Object">
+      <UniqueIdentifier>{3aeec40d-de66-4bdf-adbc-c2d5d106924d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Components\Game">
+      <UniqueIdentifier>{8a848cca-e857-46e1-9def-20a742312ae3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SDLDemo.cpp">
@@ -54,9 +60,6 @@
     <ClCompile Include="PlayerController.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Source Files\Engine\Components</Filter>
-    </ClCompile>
     <ClCompile Include="Component.cpp">
       <Filter>Source Files\Engine\Components</Filter>
     </ClCompile>
@@ -69,17 +72,29 @@
     <ClCompile Include="Vector.cpp">
       <Filter>Source Files\Math</Filter>
     </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>Source Files\Engine\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics.cpp">
-      <Filter>Source Files\Engine\Components</Filter>
-    </ClCompile>
     <ClCompile Include="fileman.cpp">
       <Filter>Source Files\Engine\OS</Filter>
     </ClCompile>
     <ClCompile Include="screen.cpp">
       <Filter>Source Files\Engine\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics.cpp">
+      <Filter>Source Files\Engine\Components\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files\Engine\Components\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source Files\Engine\Components\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSettings.cpp">
+      <Filter>Source Files\Engine\Components\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files\Engine\Components\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelManager.cpp">
+      <Filter>Source Files\Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -359,29 +374,38 @@
     <ClInclude Include="keyboard.h">
       <Filter>Source Files\Engine\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Source Files\Engine\Components</Filter>
-    </ClInclude>
     <ClInclude Include="ComponentRegistry.h">
       <Filter>Source Files\Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
       <Filter>Source Files\Engine\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Source Files\Engine\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>Source Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics.h">
-      <Filter>Source Files\Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="fileman.h">
       <Filter>Source Files\Engine\OS</Filter>
     </ClInclude>
     <ClInclude Include="screen.h">
       <Filter>Source Files\Engine\OS</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics.h">
+      <Filter>Source Files\Engine\Components\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Source Files\Engine\Components\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Source Files\Engine\Components\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSettings.h">
+      <Filter>Source Files\Engine\Components\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Source Files\Engine\Components\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelManager.h">
+      <Filter>Source Files\Engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

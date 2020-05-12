@@ -4,12 +4,16 @@
 #include "Vector.h"
 #include "Component.h"
 
+class Transform;
+class Physics;
+
 class PlayerController : public Component
 {
 public:
 	PlayerController(GameObject* parent);
 
-	void update(float dt);
+	void start() override;
+	void update(float dt) override;
 
 	float mouseMinDistance_{ 0 };
 	float mouseFarDistance_{ 12 };
@@ -23,6 +27,9 @@ public:
 	float maxLVelocity_{ 100 };
 	float maxVVelocity_{ 100 };
 private:
+
+	Transform* transform{ nullptr };
+	Physics* physics{ nullptr };
 
 	Vector2 ParseMouse();
 	void Decelerate();

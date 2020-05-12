@@ -159,7 +159,10 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="fileman.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameSettings.cpp" />
     <ClCompile Include="keyboard.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="mouse.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="PlayerController.cpp" />
@@ -175,7 +178,10 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="fileman.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameSettings.h" />
     <ClInclude Include="keyboard.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelManager.h" />
     <ClInclude Include="MathUtils.h" />
     <ClInclude Include="mouse.h" />
     <ClInclude Include="Physics.h" />

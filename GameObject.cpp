@@ -21,4 +21,8 @@ void GameObject::update(float dt)
 GameObject::GameObject(std::string datafile) : file_(datafile)
 {
 	components_ = file_.construct_components(this);
+	for (Component* c : components_)
+	{
+		c->start();
+	}
 }

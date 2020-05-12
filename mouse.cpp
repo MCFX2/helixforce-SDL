@@ -1,6 +1,6 @@
 #include "mouse.h"
 #include "Engine.h"
-
+#include "screen.h"
 #include <array>
 
 static const unsigned int MouseEvent_Min = SDL_MOUSEMOTION;
@@ -8,6 +8,8 @@ static const unsigned int MouseEvent_Max = SDL_MOUSEWHEEL;
 
 static Vector2 curPos;
 static Vector2 lastPos;
+
+static const Vector2 assumedScreen(1280, 720);
 
 static const unsigned int maxHandledMouseButton = SDL_BUTTON_X2;
 struct mouseButtonStateContainer
@@ -24,7 +26,9 @@ namespace Mouse
 	{
 		int x, y;
 		SDL_GetMouseState(&x, &y);
-		curPos = Vector2((float)x, (float)y);
+		curPos = Vector2((float)x, (float)y) / Vector2(
+			(float)Screen::Get_Screen().w, (float)Screen::Get_Screen().h);
+		curPos *= assumedScreen; //correct for other resolutions
 	}
 
 	void tick_mouse_states()
