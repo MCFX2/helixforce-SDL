@@ -1,0 +1,12 @@
+Transform
+	Translation: 640 360
+	Scale: 1280 720
+Sprite
+	Spritename: bg3.png
+	Layer: 0
+Sprite
+	Spritename: bg3.png
+	Layer: 0
+	Offset: 1280 0
+ScrollAndRepeat
+	Speed: -200

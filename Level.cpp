@@ -2,7 +2,7 @@
 
 #include "ComponentRegistry.h"
 #include "LevelManager.h"
-
+#include "Sprite.h"
 
 static void LevelNameProperty(Component* c, std::istringstream& ss)
 {
@@ -40,12 +40,13 @@ void Level::add_object(std::string filename)
 	construct_list.push_back(filename);
 }
 
-void Level::render() const
+void Level::render()
 {
 	for (GameObject* g : object_list)
 	{
 		g->render();
 	}
+	Sprite::RenderAll();
 }
 
 void Level::update(float dt)

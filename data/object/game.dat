@@ -1,9 +1,10 @@
 GameSettings
 	Resolution: 1280 720
 	WindowPosition: 50 50
-	RefreshRate: 60
+	RefreshRate: 144
 	Fullscreen: 0
 	FirstLevel: MainLevel
 Level
 	Name: MainLevel
 	Object: player.dat
+	Object: spacebackground.dat

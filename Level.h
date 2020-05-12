@@ -8,7 +8,7 @@ public:
 	void start() override;
 
 	void update(float dt) override;
-	void render() const override;
+	void render() override;
 
 
 	std::string name;

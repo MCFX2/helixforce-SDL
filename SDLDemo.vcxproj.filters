@@ -19,9 +19,6 @@
     <Filter Include="Header Files\SDL\Image">
       <UniqueIdentifier>{8010de61-c1b4-486a-b6ed-cd30c5a85c24}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Player">
-      <UniqueIdentifier>{5b4cfaf6-8a33-42a7-ae57-71af52826fbd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Math">
       <UniqueIdentifier>{815edf2b-e538-451f-b397-6843095aade4}</UniqueIdentifier>
     </Filter>
@@ -43,6 +40,15 @@
     <Filter Include="Source Files\Engine\Components\Game">
       <UniqueIdentifier>{8a848cca-e857-46e1-9def-20a742312ae3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\CPPBehavior">
+      <UniqueIdentifier>{5b4cfaf6-8a33-42a7-ae57-71af52826fbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CPPBehavior\Player">
+      <UniqueIdentifier>{5bdc2938-364f-4a7c-8b99-512c2f1d2c71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CPPBehavior\Misc">
+      <UniqueIdentifier>{d947946d-f918-424e-b1da-6cfe2b0d4f5e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SDLDemo.cpp">
@@ -56,9 +62,6 @@
     </ClCompile>
     <ClCompile Include="mouse.cpp">
       <Filter>Source Files\Engine\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerController.cpp">
-      <Filter>Source Files\Player</Filter>
     </ClCompile>
     <ClCompile Include="Component.cpp">
       <Filter>Source Files\Engine\Components</Filter>
@@ -95,6 +98,12 @@
     </ClCompile>
     <ClCompile Include="LevelManager.cpp">
       <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerController.cpp">
+      <Filter>Source Files\CPPBehavior\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrollAndRepeat.cpp">
+      <Filter>Source Files\CPPBehavior\Misc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -353,9 +362,6 @@
     <ClInclude Include="SDL_extensions\image\include\SDL_image.h">
       <Filter>Header Files\SDL\Image</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerController.h">
-      <Filter>Source Files\Player</Filter>
-    </ClInclude>
     <ClInclude Include="Vector.h">
       <Filter>Source Files\Math</Filter>
     </ClInclude>
@@ -406,6 +412,12 @@
     </ClInclude>
     <ClInclude Include="LevelManager.h">
       <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerController.h">
+      <Filter>Source Files\CPPBehavior\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="ScrollAndRepeat.h">
+      <Filter>Source Files\CPPBehavior\Misc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

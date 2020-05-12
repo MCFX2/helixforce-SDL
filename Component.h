@@ -12,7 +12,7 @@ public:
 	Component(GameObject* parent);
 
 	virtual void update(float dt) = 0;
-	virtual void render() const {};
+	virtual void render() {};
 	//this function gets run after the object is fully constructed but
 	//prior to the first update, equivalent to Start() in Unity.
 	virtual void start() {};

@@ -72,16 +72,16 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\MCFX2\source\repos\SDLDemo\SDL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\MCFX2\source\repos\SDLDemo\SDL_extensions\image\lib\x86;C:\Users\MCFX2\source\repos\SDLDemo\SDL\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>SDL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>SDL_extensions\image\lib\x86;SDL\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\MCFX2\source\repos\SDLDemo\SDL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\MCFX2\source\repos\SDLDemo\SDL_extensions\image\lib\x86;C:\Users\MCFX2\source\repos\SDLDemo\SDL\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>SDL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>SDL_extensions\image\lib\x86;SDL\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -167,6 +167,7 @@
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="screen.cpp" />
+    <ClCompile Include="ScrollAndRepeat.cpp" />
     <ClCompile Include="SDLDemo.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="ComponentRegistry.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="Physics.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="screen.h" />
+    <ClInclude Include="ScrollAndRepeat.h" />
     <ClInclude Include="SDL\include\begin_code.h" />
     <ClInclude Include="SDL\include\close_code.h" />
     <ClInclude Include="SDL\include\SDL.h" />
