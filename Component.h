@@ -10,7 +10,7 @@ class Component
 {
 public:
 	Component(GameObject* parent);
-
+	virtual ~Component() {};
 	virtual void update(float dt) = 0;
 	virtual void render() {};
 	//this function gets run after the object is fully constructed but
@@ -19,8 +19,7 @@ public:
 
 	//convenience function
 	template<typename T>
-	T* get_component() const
-	{
+	T* get_component() const {
 		return parent_->get_component<T>();
 	}
 

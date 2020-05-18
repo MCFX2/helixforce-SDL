@@ -3,6 +3,7 @@ GameSettings
 	WindowPosition: 50 50
 	RefreshRate: 144
 	Fullscreen: 0
+	ExtraConfig: collisiongroups.dat
 	FirstLevel: MainLevel
 Level
 	Name: MainLevel

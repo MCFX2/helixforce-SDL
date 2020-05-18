@@ -13,16 +13,7 @@
 
 #include "Utils.h"
 
-#include <Windows.h>
-
 #include "screen.h"
-
-enum class curScreen
-{
-	title,
-};
-
-static curScreen curState = curScreen::title;
 
 static SDL_Renderer* renderer;
 
@@ -49,6 +40,7 @@ namespace Engine
 	{
 		SDL_InitSubSystem(SDL_INIT_EVERYTHING);
 		IMG_Init(IMG_INIT_PNG);
+		//init the game objects
 		object_manager = new GameObject("game.dat");
 		targetFPS = Screen::Get_Screen().refreshRate;
 	}
@@ -73,15 +65,18 @@ namespace Engine
 		dt = frameTime.elapsed();
 		if (dt < 1.f / targetFPS)
 		{ //we beat the target frame time, wait out the remainder
-			SDL_Delay((int)(1000 * ((1.f / targetFPS) - dt)));
-			//std::this_thread::sleep_for(std::chrono::seconds((1.f / targetFPS) - dt)));
-			dt = 1.f / targetFPS;
+			int msDelay = (int)(1000 * ((1.f / targetFPS) - dt));
+			SDL_Delay(msDelay);
+			//this function only has millisecond precision, so adjust our dt to match
+			//(this avoids bobbing effects w/ rounding errors)
+			dt += (float)msDelay / 1000.f;
 		}
 		frameTime.reset();
 	}
 
 	void Shutdown()
 	{
+		delete object_manager;
 		SDL_QuitSubSystem(SDL_INIT_EVERYTHING);
 	}
 

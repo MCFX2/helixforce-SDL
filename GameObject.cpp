@@ -18,6 +18,14 @@ void GameObject::update(float dt)
 	}
 }
 
+GameObject::~GameObject()
+{
+	for (Component* c : components_)
+	{
+		delete c;
+	}
+}
+
 GameObject::GameObject(std::string datafile) : file_(datafile)
 {
 	components_ = file_.construct_components(this);

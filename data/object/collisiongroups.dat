@@ -1,0 +1,6 @@
+Collisiongroup
+	Name: PlayerBullet
+	CollidesWith: Enemy
+Collisiongroup
+	Name: Enemy
+	CollidesWith: PlayerBullet

@@ -105,6 +105,12 @@
     <ClCompile Include="ScrollAndRepeat.cpp">
       <Filter>Source Files\CPPBehavior\Misc</Filter>
     </ClCompile>
+    <ClCompile Include="CollisionGroup.cpp">
+      <Filter>Source Files\Engine\Components\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Source Files\Engine\Components\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDL\include\begin_code.h">
@@ -418,6 +424,12 @@
     </ClInclude>
     <ClInclude Include="ScrollAndRepeat.h">
       <Filter>Source Files\CPPBehavior\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionGroup.h">
+      <Filter>Source Files\Engine\Components\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Source Files\Engine\Components\Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -11,6 +11,7 @@ class GameObject
 {
 public:
 	GameObject(std::string datafile);
+	~GameObject();
 	void update(float dt);
 	void render() const;
 	void post_construction();
