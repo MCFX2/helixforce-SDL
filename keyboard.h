@@ -1,5 +1,7 @@
 #pragma once
 
+#include "SDL/include/SDL_scancode.h"
+
 namespace Keyboard
 {
 	void Update();

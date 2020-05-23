@@ -2,18 +2,22 @@
 
 #include "Component.h"
 #include "Vector.h"
-#include <functional>
+#include "Delegate.h"
 
 class CollisionGroup;
 class Transform;
+
+struct CollisionEvent
+{
+	CollisionGroup* other_group;
+
+};
 
 class Collider : public Component
 {
 public:
 	Collider(GameObject* parent);
 	~Collider();
-
-	using CollisionHandler = std::function<void(void*, GameObject*)>;
 
 	void update(float dt) override {};
 
@@ -22,15 +26,17 @@ public:
 	virtual bool is_colliding(Collider* other);
 
 	void set_collisiongroup(CollisionGroup*);
-	CollisionGroup* get_collisionGroup() { return collisionGroup; };
+	//CollisionGroup* get_collisionGroup() { return collisionGroup; };
 
-	void register_collision_handler(CollisionHandler);
-	void unregister_collision_handler(CollisionHandler);
+	static void update_all();
 
 	Vector2 offset{ Vector2() };
 	Vector2 extents{ Vector2() };
+
+	Delegate<const CollisionEvent&> on_collide_;
+
 private:
-	std::vector<CollisionHandler> collision_handlers;
+
 	CollisionGroup* collisionGroup{ nullptr };
 	Transform* transform{ nullptr };
 };

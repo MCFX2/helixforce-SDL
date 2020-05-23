@@ -25,7 +25,14 @@ void Keyboard::Update()
 
 	for (SDL_Event e : keyboard_events)
 	{
-		keyStates[e.key.keysym.scancode].isDown = e.type == SDL_KEYDOWN;
+		if (e.type == SDL_KEYDOWN)
+		{
+			keyStates[e.key.keysym.scancode].isDown = true;
+		}
+		else if (e.type == SDL_KEYUP)
+		{
+			keyStates[e.key.keysym.scancode].isDown = false;
+		}
 	}
 }
 

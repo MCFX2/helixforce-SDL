@@ -38,13 +38,25 @@ Collider::~Collider()
 	}
 }
 
-void cUpdate()
+void Collider::update_all()
 {
 	for (auto coll = collider_list.begin(); coll < collider_list.end(); ++coll)
 	{
 		for (auto other = coll; other < collider_list.end(); ++other)
 		{
-			
+			Collider* collider = *coll;
+			Collider* oCollider = *other;
+			if (collider->collisionGroup->does_collide(oCollider->collisionGroup))
+			{
+				if (collider->is_colliding(oCollider))
+				{
+					CollisionEvent ce;
+					ce.other_group = oCollider->collisionGroup;
+					collider->on_collide_.invoke(ce);
+					ce.other_group = collider->collisionGroup;
+					oCollider->on_collide_.invoke(ce);
+				}
+			}
 		}
 	}
 }
@@ -80,22 +92,4 @@ void Collider::set_collisiongroup(CollisionGroup* cg)
 	collisionGroup = cg;
 	//add collider to cg list
 	cg->add_collider(this);
-}
-
-void Collider::register_collision_handler(CollisionHandler fn)
-{
-	collision_handlers.push_back(fn);
-}
-
-void Collider::unregister_collision_handler(CollisionHandler fn)
-{
-	for (auto it = collision_handlers.begin(); it < collision_handlers.end(); ++it)
-	{
-		//todo: find a way to do this that actually works
-		/*if (*it == fn)
-		{
-			collision_handlers.erase(it);
-			return;
-		}*/
-	}
 }

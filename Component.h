@@ -23,8 +23,8 @@ public:
 		return parent_->get_component<T>();
 	}
 
+	GameObject* get_parent() { return parent_; };
+
 private:
-	//components should not be interfacing with the parent
-	//directly except during construction (to get the source file/properties).
 	GameObject* parent_;
 };

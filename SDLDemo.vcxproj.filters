@@ -111,6 +111,9 @@
     <ClCompile Include="Collider.cpp">
       <Filter>Source Files\Engine\Components\Object</Filter>
     </ClCompile>
+    <ClCompile Include="BulletBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDL\include\begin_code.h">
@@ -430,6 +433,12 @@
     </ClInclude>
     <ClInclude Include="Collider.h">
       <Filter>Source Files\Engine\Components\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Delegate.h">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletBase.h">
+      <Filter>Source Files\CPPBehavior\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

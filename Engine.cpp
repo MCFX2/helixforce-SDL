@@ -12,9 +12,10 @@
 #include "keyboard.h"
 
 #include "Utils.h"
-
+#include "Collider.h"
 #include "screen.h"
 
+#include "Delegate.h"
 static SDL_Renderer* renderer;
 
 static std::vector<SDL_Event*> events;
@@ -41,7 +42,7 @@ namespace Engine
 		SDL_InitSubSystem(SDL_INIT_EVERYTHING);
 		IMG_Init(IMG_INIT_PNG);
 		//init the game objects
-		object_manager = new GameObject("game.dat");
+		object_manager = new GameObject("game.dat", nullptr);
 		targetFPS = Screen::Get_Screen().refreshRate;
 	}
 
@@ -53,6 +54,8 @@ namespace Engine
 		Mouse::Update();
 		Keyboard::Update();
 		object_manager->update((float)dt);
+		//resolve collisions
+		Collider::update_all();
 		//render handling
 		SDL_RenderClear(renderer);
 		object_manager->render();

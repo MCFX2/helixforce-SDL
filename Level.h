@@ -10,6 +10,9 @@ public:
 	void update(float dt) override;
 	void render() override;
 
+	//attach object to level render/destruction queue
+	void attach_object(GameObject*);
+	void detach_object(GameObject*);
 
 	std::string name;
 
@@ -20,5 +23,7 @@ public:
 private:
 	std::vector<std::string> construct_list;
 	std::vector<GameObject*> object_list;
+	std::vector<GameObject*> to_remove;
+	std::vector<GameObject*> to_add;
 };
 

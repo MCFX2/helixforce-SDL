@@ -40,6 +40,16 @@ void Level::add_object(std::string filename)
 	construct_list.push_back(filename);
 }
 
+void Level::attach_object(GameObject* obj)
+{
+	to_add.push_back(obj);
+}
+
+void Level::detach_object(GameObject* obj)
+{
+	to_remove.push_back(obj);
+}
+
 void Level::render()
 {
 	for (GameObject* g : object_list)
@@ -55,12 +65,29 @@ void Level::update(float dt)
 	{
 		g->update(dt);
 	}
+	for (GameObject* ga : to_add)
+	{
+		object_list.push_back(ga);
+	}
+	to_add.clear();
+
+	for (GameObject* gr : to_remove)
+	{
+		auto r = std::find(object_list.begin(), object_list.end(), gr);
+		if (r != object_list.end())
+		{
+			object_list.erase(r);
+		}
+		delete gr;
+	}
+	to_remove.clear();
+
 }
 
 void Level::start()
 {
 	for (std::string s : construct_list)
 	{
-		object_list.push_back(new GameObject(s));
+		new GameObject(s, this);
 	}
 }

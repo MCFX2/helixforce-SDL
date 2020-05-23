@@ -4,6 +4,7 @@
 #include "MathUtils.h"
 
 #include "mouse.h"
+#include "keyboard.h"
 
 #include "GameObject.h"
 
@@ -37,9 +38,14 @@ void PlayerController::start()
 
 void PlayerController::update(float dt)
 {
-	Accelerate();
+ Accelerate();
 	ClampPosition();
 	ClampVelocity();
+
+	if (Keyboard::Get_KeyPressed(SDL_SCANCODE_SPACE))
+	{
+		new GameObject("animebullet.dat", get_parent()->get_level());
+	}
 }
 
 void PlayerController::ClampPosition()

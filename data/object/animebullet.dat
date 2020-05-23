@@ -2,7 +2,8 @@ Transform
 	Translation: 0 0
 	Scale: 80 20
 Sprite
-	Spritename: player/Bullet_Player.png
+	Spritename: player/Bullet_player.png
+	Layer: 6
 Physics
 BulletBase
 	Damage: 0.5
@@ -10,4 +11,3 @@ Collider
 	Offset: 0 0
 	Size: 80 20
 	Collisiongroup: PlayerBullet
-Rainbowify

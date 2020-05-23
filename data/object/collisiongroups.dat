@@ -1,6 +1,12 @@
 Collisiongroup
+	Name: default
+	ID: 0
+Collisiongroup
 	Name: PlayerBullet
 	CollidesWith: Enemy
+Collisiongroup
+	Name: Player
+	Collideswith: Enemy
 Collisiongroup
 	Name: Enemy
 	CollidesWith: PlayerBullet

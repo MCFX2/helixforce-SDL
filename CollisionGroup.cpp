@@ -28,6 +28,7 @@ static void CollidesWithProperty(Component* c, std::istringstream& ss)
 	cg->add_collisiongroup(cwith);
 }
 REGISTER_PROPERTY(CollisionGroup, "CollidesWith", CollidesWithProperty);
+REGISTER_SIMPLE_PROPERTY(CollisionGroup, "ID", id);
 
 CollisionGroup::CollisionGroup(GameObject* parent) : Component(parent)
 	,id(current_num_cg++)
@@ -81,6 +82,10 @@ void CollisionGroup::start()
 
 bool CollisionGroup::does_collide(CollisionGroup* cg)
 {
+	if (id == 0)
+	{ //bit of a hack, default collisiongroup just collides with everything
+		return true;
+	}
 	for (CollisionGroup* c : cwith_list)
 	{
 		if (cg == c) return true;

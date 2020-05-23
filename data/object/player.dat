@@ -15,3 +15,7 @@ Sprite
 	Spritename: player/shipscout.png
 	Layer: 5
 Physics
+Collider
+	Offset: 0 0
+	size: 10 10
+	Collisiongroup: default

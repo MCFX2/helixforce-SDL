@@ -17,7 +17,7 @@ public:
 	bool does_collide(CollisionGroup*);
 
 	std::string name;
-	unsigned id;
+	unsigned id{ 1 };
 	//adds a collisiongroup to the list of collisiongroups
 	//this will collide with
 	void add_collisiongroup(std::string);

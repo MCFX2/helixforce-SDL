@@ -11,7 +11,7 @@ void addExtraConfigObject(Component* c, std::istringstream& ss)
 	GameSettings* gs = static_cast<GameSettings*>(c);
 	std::string configName;
 	ss >> configName;
-	gs->add_extra_config(new GameObject(configName));
+	gs->add_extra_config(new GameObject(configName, nullptr));
 }
 
 REGISTER_COMPONENT("GameSettings", GameSettings);
