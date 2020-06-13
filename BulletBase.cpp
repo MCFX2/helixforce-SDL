@@ -12,13 +12,13 @@ BulletBase::BulletBase(GameObject* parent) : Component(parent)
 
 void BulletBase::start()
 {
-	get_component<Collider>()->on_collide_.subscribe(this, &BulletBase::on_collide);
+	hndl_collide_ = get_component<Collider>()->on_collide.subscribe(this, &BulletBase::on_collide);
 }
 
 void BulletBase::on_collide(const CollisionEvent& ce)
 {
 	if (ce.other_group->name == "PlayerEnemy")
 	{
-		//get_parent()->destroy();
+		get_parent()->destroy();
 	}
 }

@@ -18,32 +18,46 @@ myBehavior.cpp: onCollide.subscribe(this, myBehavior::someFunc);
 #include <functional>
 #include <vector>
 
-
-using DelegateHandle = unsigned long long int;
-
+using CallbackID = unsigned long long int;
 
 template<class... CallbackParams>
 class Delegate
 {
 private:
-	using Callback = std::function<void(CallbackParams...)>;
-	using CallbackContainer = std::vector<Callback>;
+	template<typename... T>
+	friend struct DelegateHandle;
 
+	using Callback = std::function<void(CallbackParams...)>;
+
+	struct callback_data {
+		Callback cb;
+		CallbackID handle;
+	};
+
+	using CallbackContainer = std::vector<callback_data>;
+	static const CallbackID id_invalid = -1;
 	//takes a member function and an instance to an object, and returns an std::function
 	//that will call it on that specific instance. Usage example:
 	//auto my_attached_fn = Attach(&myClass::myFunc, my_instance);
 	template<typename Ret_type, typename Src_type, typename Inst, typename... Args>
-	std::function<Ret_type(Args...)> Attach(Ret_type(Src_type::* func)(Args...), Inst instance)
-	{
+	static std::function<Ret_type(Args...)> Attach(Ret_type(Src_type::* func)(Args...), Inst instance){
 		return [instance, func](Args... args)->Ret_type {return (instance->*func)(args...); };
 	}
 public:
 	//DelegateHandle subscribe(Callback const&) const;
 
+	//subscribes an instance + member delegate func, returns a handle.
+	//you MUST keep track of this handle to unsubscribe
+	//considering using an intermediate object to manage this for you
 	template<typename T>
-	void subscribe(T* instance, void(T::* func)(CallbackParams...));
+	DelegateHandle<CallbackParams...> subscribe(T* instance, void(T::* func)(CallbackParams...));
 
+	//invoke the underlying functionset with the given args
 	void invoke(CallbackParams...);
+	void operator()(CallbackParams... cbp) { invoke(cbp...); };
+
+	void unsubscribe(DelegateHandle<CallbackParams...>&& handle);
+	//Delegate& operator+=()
 
 private:
 	CallbackContainer callbacks_;
@@ -53,16 +67,66 @@ private:
 
 template<class ...CallbackParams>
 template<typename T>
-inline void Delegate<CallbackParams...>::subscribe(T* instance, void(T::* func)(CallbackParams...))
+inline DelegateHandle<CallbackParams...> Delegate<CallbackParams...>::subscribe(T* instance, void(T::* func)(CallbackParams...))
 {
-	callbacks_.push_back(Attach(func, instance));
+	std::function<void(CallbackParams...)> fn = Attach(func, instance);
+	DelegateHandle<CallbackParams...> dh(this);
+	callbacks_.push_back({ fn, dh.id });
+
+	return dh;
 }
 
 template<class ...CallbackParams>
 inline void Delegate<CallbackParams...>::invoke(CallbackParams ... cbparams)
 {
-	for (Callback& cb : callbacks_)
+	for (callback_data& cbd : callbacks_)
 	{
-		std::invoke(cb, cbparams...);
+		std::invoke(cbd.cb, cbparams...);
 	}
 }
+
+template<class ...CallbackParams>
+inline void Delegate<CallbackParams...>::unsubscribe(DelegateHandle<CallbackParams...>&& handle)
+{
+	if (handle.id == id_invalid)
+	{ // handle is invalid, save some time and don't look
+		return;
+	}
+	for (auto it = callbacks_.begin(); it < callbacks_.end(); ++it)
+	{
+		if (it->handle == handle.id)
+		{
+			callbacks_.erase(it);
+			break;
+		}
+	}
+}
+
+template<typename ... T>
+struct DelegateHandle
+{
+	static CallbackID cur_id;
+	DelegateHandle(Delegate<T...>* t) : id(cur_id++), unsub_target(t){}
+	DelegateHandle() : id(Delegate<T...>::id_invalid), unsub_target(nullptr){}
+	DelegateHandle(const DelegateHandle&) = delete;
+	DelegateHandle(DelegateHandle&& dh)
+	{
+		id = dh.id; unsub_target = dh.unsub_target;
+		dh.unsub_target = nullptr;
+	}
+	~DelegateHandle() {
+		if(unsub_target) unsub_target->unsubscribe(std::move(*this));
+	}
+
+	DelegateHandle& operator=(DelegateHandle&& rhs) {
+		if (unsub_target) unsub_target->unsubscribe(std::move(*this));
+		id = rhs.id; unsub_target = rhs.unsub_target;
+		rhs.unsub_target = nullptr;
+		return *this;
+	}
+
+	CallbackID id;
+	Delegate<T...>* unsub_target;
+};
+template<typename ...T>
+CallbackID DelegateHandle<T...>::cur_id = 0;

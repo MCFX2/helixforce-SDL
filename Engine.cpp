@@ -28,7 +28,7 @@ namespace Engine
 	{
 		std::vector<SDL_Event> event_list;
 		SDL_Event cur;
-		while (SDL_PeepEvents(&cur, 1, SDL_GETEVENT, min, max))
+		while (SDL_PeepEvents(&cur, 1, SDL_GETEVENT, min, max + 1))
 		{
 			event_list.push_back(cur);
 		}

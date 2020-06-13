@@ -112,7 +112,7 @@
       <Filter>Source Files\Engine\Components\Object</Filter>
     </ClCompile>
     <ClCompile Include="BulletBase.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\CPPBehavior\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

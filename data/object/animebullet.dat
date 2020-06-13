@@ -1,6 +1,6 @@
 Transform
-	Translation: 0 0
-	Scale: 80 20
+	Translation: 50 50
+	Scale: 40 20
 Sprite
 	Spritename: player/Bullet_player.png
 	Layer: 6

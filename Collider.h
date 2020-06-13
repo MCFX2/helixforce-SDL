@@ -33,7 +33,7 @@ public:
 	Vector2 offset{ Vector2() };
 	Vector2 extents{ Vector2() };
 
-	Delegate<const CollisionEvent&> on_collide_;
+	Delegate<const CollisionEvent&> on_collide;
 
 private:
 

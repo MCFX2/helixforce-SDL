@@ -18,12 +18,12 @@ void Keyboard::Update()
 {
 	auto keyboard_events = Engine::Get_Events(SDL_KEYDOWN, SDL_KEYUP);
 
-	for (keyState k : keyStates)
+	for (keyState& k : keyStates)
 	{
 		k.wasDown = k.isDown;
 	}
 
-	for (SDL_Event e : keyboard_events)
+	for (SDL_Event& e : keyboard_events)
 	{
 		if (e.type == SDL_KEYDOWN)
 		{

@@ -52,9 +52,9 @@ void Collider::update_all()
 				{
 					CollisionEvent ce;
 					ce.other_group = oCollider->collisionGroup;
-					collider->on_collide_.invoke(ce);
+					collider->on_collide(ce);
 					ce.other_group = collider->collisionGroup;
-					oCollider->on_collide_.invoke(ce);
+					oCollider->on_collide(ce);
 				}
 			}
 		}

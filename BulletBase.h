@@ -2,6 +2,7 @@
 
 #include "Component.h"
 #include "Collider.h"
+#include "Delegate.h"
 
 class BulletBase : public Component
 {
@@ -14,4 +15,5 @@ public:
 	float damage{ 1 };
 private:
 	void on_collide(const CollisionEvent&);
+	DelegateHandle<const CollisionEvent&> hndl_collide_;
 };
