@@ -23,7 +23,11 @@ std::vector<Component*> ObjectFile::construct_components(GameObject* parent)
 	std::getline(file_, curLine);
 	while (!file_.eof())
 	{ //first determine if line refers to a component
-		if (curLine.empty()) continue;
+		if (curLine.empty())
+		{
+			std::getline(file_, curLine);
+			continue;
+		}
 		if (std::isalpha(curLine.at(0)))
 		{ //if line starts with a letter, assume it is a component
 			std::transform(curLine.begin(), curLine.end(), curLine.begin(), std::toupper); //convert to upper case prior to storing

@@ -36,5 +36,13 @@ namespace Util
 	inline Vector2 Abs(const Vector2& value) {
 		return value.absolute();
 	}
+
+	//converts radians to degrees
+	float Degrees(float rads);
+	//converts degrees to radians
+	float Radians(float degs);
+
+	//gives a random number in the range given
+	float Random(float min, float max);
 }
 

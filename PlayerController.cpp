@@ -40,12 +40,7 @@ void PlayerController::update(float dt)
 {
  Accelerate();
 	ClampPosition();
-	ClampVelocity();
-
-	if (Keyboard::Get_KeyPressed(SDL_SCANCODE_SPACE))
-	{
-		new GameObject("animebullet.dat", get_parent()->get_level());
-	}
+	ClampVelocity(); 
 }
 
 void PlayerController::ClampPosition()

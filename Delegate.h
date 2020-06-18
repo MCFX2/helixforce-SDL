@@ -119,7 +119,7 @@ struct DelegateHandle
 	}
 
 	DelegateHandle& operator=(DelegateHandle&& rhs) {
-		if (unsub_target) unsub_target->unsubscribe(std::move(*this));
+		this->~DelegateHandle();
 		id = rhs.id; unsub_target = rhs.unsub_target;
 		rhs.unsub_target = nullptr;
 		return *this;

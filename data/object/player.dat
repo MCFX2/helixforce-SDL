@@ -19,3 +19,6 @@ Collider
 	Offset: 0 0
 	size: 10 10
 	Collisiongroup: default
+PlayerShooting
+	BulletFireDelayAnime: 0.1
+	BulletSpreadAnime 0.4

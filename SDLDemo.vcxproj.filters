@@ -114,6 +114,12 @@
     <ClCompile Include="BulletBase.cpp">
       <Filter>Source Files\CPPBehavior\Player</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerShooting.cpp">
+      <Filter>Source Files\CPPBehavior\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="MathUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDL\include\begin_code.h">
@@ -438,6 +444,9 @@
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="BulletBase.h">
+      <Filter>Source Files\CPPBehavior\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerShooting.h">
       <Filter>Source Files\CPPBehavior\Player</Filter>
     </ClInclude>
   </ItemGroup>
